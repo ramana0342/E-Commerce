@@ -17,24 +17,23 @@ function Index(){
 
 
     useEffect(()=>{
-            axios.get("https://dummyjson.com/products?skip=0&limit=30")
+            axios.get("https://dummyjson.com/products?skip=0&limit=100")
             .then((res)=>{
                 let products=res.data.products;
                 setProductsData(products);
+                if(searchData){
+                let filterPBNItems=productsData.filter((item,index)=>{
+                  if(`${item.title}${item.brand}${item.category}`.toLowerCase().includes(searchData.toLowerCase())==true){
+                      return true;
+                  }   
+             })
+             setfilterProducts(filterPBNItems)
+            }
             })
-    },[])
-
-useEffect(()=>{
-          let filterPBNItems=productsData.filter((item,index)=>{
-                if(`${item.title}${item.brand}`.toLowerCase().includes(searchData.toLowerCase())==true){
-                    return true;
-                }   
-           })
-           setfilterProducts(filterPBNItems)
-           
           
-
     },[searchData])
+
+
 
       
    const handleFilters= (parameter)=>{
@@ -196,7 +195,7 @@ useEffect(()=>{
                 console.log(e.target.value)
                 setSearchData(e.target.value) 
             }} 
-        type="text" className="form-control inputField" placeholder="Search Product and Brands" />
+        type="text" className="form-control inputField" placeholder="Search Product or Product Brands or Product Category " />
         </div>
         </div>
 
@@ -220,7 +219,7 @@ useEffect(()=>{
          <div class="accordion-body">
    
          <div class="form-check">
-         <input  onClick={()=>{
+         <input  onChange={()=>{
       handleFilters("fourtofive")
      }}  class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
      <label class="form-check-label" for="flexCheckDefault">
@@ -303,7 +302,8 @@ useEffect(()=>{
            
                
                 {productsData.length==0 && filterProducts.length==0 ? <SheimerEffect/>: ""}
-                {filterProducts.length>0 && searchData!=="" ? <FilterData filterProducts={filterProducts}/> : <InitialProduct productsData={productsData}/> }
+                {filterProducts.length>0 && searchData!=="" ? <FilterData filterProducts={filterProducts}/> : <InitialProduct productsData={productsData}
+                Filters ={Filters}/> }
 
     
           
