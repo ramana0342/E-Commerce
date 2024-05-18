@@ -70,4 +70,176 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-///https://dummyjson.com/products?skip=0&limit=100    get 100 products logic
+===========> https://dummyjson.com/products?skip=0&limit=100    get 100 products logic
+
+
+
+  /* const handleFilters= (parameter)=>{
+            console.log("Trigger event")
+           if(parameter==="fourtofive"&&radioBtnStatus==0){
+            if(Filters.length>0){
+                let filtersData=Filters.filter((item,i)=>{
+                if(item.rating>=4 && item.rating<=4.5){
+                  
+                    return true
+                  
+                }
+             })
+             
+             console.log(filtersData)
+           
+             setFilters(filtersData)
+             setRadioBtnStatus(1)
+             
+            }
+            
+            else{
+            let filtersData=productsData.filter((item,i)=>{
+               console.log("2")
+               if(item.rating>=4 && item.rating<=4.4){
+                return true;
+               }
+            })
+            console.log(filtersData)
+            
+             setFilters(filtersData)
+             setRadioBtnStatus(1)
+           }
+
+          }else if(parameter==="fourtofive"&&radioBtnStatus==1){
+            let filtersData=Filters.filter((item,i)=>{
+              if(item.rating>=4 && item.rating<=4.5){
+                
+                  return false
+
+                
+              }
+           })
+           
+           console.log(filtersData)
+         
+           setFilters(filtersData)
+           setRadioBtnStatus(0)
+
+
+          }
+        
+         
+        
+        //------------------rating 2: 4.5 and above:-----------------------------
+
+        else if(parameter==="above45"){
+          
+          if(Filters.length>0){
+          let filtersData=Filters.filter((item,i)=>{
+            if(item.rating>=4.5){
+             return true;
+            }
+         })
+         
+       
+         setFilters(filtersData)
+        }
+        else{
+
+          let filtersData=productsData.filter((item,i)=>{
+            if(item.rating>=4.5){
+             return true;
+            }
+         })
+           setFilters(filtersData)
+
+         }
+        }
+
+        //-----------------price below 5000 --------------------------------------------------------------
+
+        
+        else if(parameter==="below5000"){
+          console.log("5000")
+          if(Filters.length>0){
+          let filtersData=Filters.filter((item,i)=>{
+            if(item.price*100<5000){
+             return true;
+            }
+         })
+         console.log(filtersData)
+         setFilters(filtersData)
+        }
+        else{
+
+          let filtersData=productsData.filter((item,i)=>{
+            if(item.price*100<5000){
+             return true;
+            }
+         })
+         console.log(filtersData)
+         setFilters(filtersData)
+         }
+        }
+
+
+        //----------------- price between  5,001-1,00,000 -------------------------------------
+           
+        
+        else if(parameter==="between5K1TO100K"){
+          console.log("5000")
+          if(Filters.length>0){
+          let filtersData=Filters.filter((item,i)=>{
+            if(item.price*100>=5001 && item.price*100<=100000 ){
+             return true;
+            }
+         })
+         console.log(filtersData)
+         setFilters(filtersData)
+        }
+        else{
+
+          let filtersData=productsData.filter((item,i)=>{
+            if(item.price*100>=5001 && item.price*100<=100000){
+             return true;
+            }
+         })
+         console.log(filtersData)
+         setFilters(filtersData)
+         }
+        }
+
+
+        // --------------Price Between 100001 to 2,00000---------------------------
+
+
+        else if(parameter==="between100K1TO200K"){
+          console.log("5000")
+          if(Filters.length>0){
+          let filtersData=Filters.filter((item,i)=>{
+            if(item.price*100>=100001 && item.price*100<=200000 ){
+             return true;
+            }
+         })
+         console.log(filtersData)
+         setFilters(filtersData)
+        }
+        else{
+
+          let filtersData=productsData.filter((item,i)=>{
+            if(item.price*100>=10001 && item.price*100<=200000){
+             return true;
+            }
+         })
+         console.log(filtersData)
+         setFilters(filtersData)
+         }
+        }
+
+        
+   
+        
+      
+      
+
+
+      
+        }
+
+*/
