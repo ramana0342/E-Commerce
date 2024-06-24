@@ -42,35 +42,54 @@ function Index() {
 
 //=============================================CASE1=====================================================================
 
-      case parameter === "fourtofive" && radioBtnStatus.Rating1 == 0:            /////=======> case 1
-
-        if (Filters.length > 0) {
-          let filtersData = Filters.filter((item, i) => {
-            if (item.rating >= 4 && item.rating <= 4.5) {
-              return true
-            }
-          })
-          //console.log(filtersData)
-          setFilters(filtersData)
-          setRadioBtnStatus({ ...radioBtnStatus, Rating1: 1 })
-        }
-
-        else {
-          let filtersData = productsData.filter((item, i) => {
+      case parameter === "fourtofive" && radioBtnStatus.Rating1 == 0 && radioBtnStatus.Rating2==0:            /////=======> case 1
+         
+        let filtersData4to45 = productsData.filter((item, i) => {
             //console.log("2")
             if (item.rating >= 4 && item.rating <= 4.5) {
               return true;
             }
           })
           //console.log(filtersData)
-          setFilters(filtersData)
+          setFilters(filtersData4to45)
           setRadioBtnStatus({ ...radioBtnStatus, Rating1: 1 })
-        }
+      
+        break;
+
+
+        case parameter === "fourtofive" && radioBtnStatus.Rating1 == 0 && radioBtnStatus.Rating2==1:            /////=======> case 1
+         
+        let removefiltersData4to45 = productsData.filter((item, i) => {
+            //console.log("2")
+            if (item.rating >= 4 && item.rating <= 4.5) {
+              return true;
+            }
+          })
+          //console.log(filtersData)
+          setFilters([...Filters,...removefiltersData4to45])
+          setRadioBtnStatus({ ...radioBtnStatus, Rating1: 1 })
+      
         break;
 
 //================================CASE2==================================================================================
       
-      case parameter === "fourtofive" && radioBtnStatus.Rating1 == 1:       
+case parameter === "fourtofive" && radioBtnStatus.Rating1 == 1 && radioBtnStatus.Rating2==1:       
+if (Filters.length > 0) {
+  let filtersData = Filters.filter((item, i) => {
+    if (item.rating >= 4.5) {
+      return true
+    }
+  })
+  //console.log(filtersData)
+  setFilters(filtersData)
+  setRadioBtnStatus({ ...radioBtnStatus, Rating1: 0 });
+}
+break;
+
+
+
+
+      case parameter === "fourtofive" && radioBtnStatus.Rating1 == 1 && radioBtnStatus.Rating2==0:       
         if (Filters.length > 0) {
           let filtersData = Filters.filter((item, i) => {
             if (item.rating >= 4 && item.rating <= 4.5) {
@@ -82,35 +101,25 @@ function Index() {
           setRadioBtnStatus({ ...radioBtnStatus, Rating1: 0 });
         }
         break;
-//===============================================CASE3====================================================================
-      case parameter === "above45" && radioBtnStatus.Rating2 == 0:
+//=============================================== CASE-3 ====================================================================
+      
+ //case-3.1
+case parameter === "above45" && radioBtnStatus.Rating2 == 0 && radioBtnStatus.Rating1==0 :
 
-        if (Filters.length > 0) {
-          let filtersData = Filters.filter((item, i) => {
-            if (item.rating > 4.5) {
-              return true
-            }
-          })
-          //console.log(filtersData)
-          setFilters(filtersData)
-          setRadioBtnStatus({ ...radioBtnStatus, Rating2: 1 })
-        }
-
-        else {
-          let filtersData = productsData.filter((item, i) => {
+          let filtersData45 = productsData.filter((item, i) => {
             //console.log("2")
             if (item.rating > 4.5) {
               return true;
             }
           })
           //console.log(filtersData)
-          setFilters(filtersData)
+          setFilters(filtersData45)
           setRadioBtnStatus({ ...radioBtnStatus, Rating2: 1 })
-        }
+        
         break;
 
-//=========================================== CASE4 ====================================================================
-      case parameter === "above45" && radioBtnStatus.Rating2 == 1:      
+      //case-3.2
+      case parameter === "above45" && radioBtnStatus.Rating2 == 1 && radioBtnStatus.Rating1==0:      
         if (Filters.length >= 0) {
           let filtersData = Filters.filter((item, i) => {
             if (item.rating > 4.5) {
@@ -122,48 +131,149 @@ function Index() {
         }
         break;
 
-//=============================================== CASE-5 ==================================================================
+//case 3.3
+        case parameter === "above45" && radioBtnStatus.Rating2 == 1 && radioBtnStatus.Rating1==1:      
+        if (Filters.length >= 0) {
+          let filtersData = Filters.filter((item, i) => {
+            if (item.rating < 4.5) {
+              return true;
+            }
+          })
+          setFilters(filtersData)
+          setRadioBtnStatus({ ...radioBtnStatus, Rating2: 0 })
+        }
+        break;
 
-  case  parameter==="below5000" && radioBtnStatus.Price1==0:
+// case-3.4
+case parameter === "above45" && radioBtnStatus.Rating2 == 0 && radioBtnStatus.Rating1==1:      
+
+  let filtersData = productsData.filter((item, i) => {
+    if (item.rating > 4.5) {
+      return true;
+    }
+  })
+  setFilters([...Filters, ...filtersData])
+  setRadioBtnStatus({ ...radioBtnStatus, Rating2: 1 })
+
+break; 
+
+
+
+
+
+
+
+
+
+
+   //=============================================== CASE-5 ==================================================================
+ 
+
+
+
+  case  parameter==="below5000" && radioBtnStatus.Price1==0 && radioBtnStatus.Rating1==0 && radioBtnStatus.Rating2==0:
        
-  if(Filters.length>0){
-    let filtersData=Filters.filter((item,i)=>{
+    let filtersDataB5k=productsData.filter((item,i)=>{
       if(item.price*100<=5000){
        return true;
       }
    })
    //console.log(filtersData)
-   setFilters(filtersData)
+   setFilters(filtersDataB5k)
    setRadioBtnStatus({ ...radioBtnStatus, Price1:1})
-  }
-  else{
-
-    let filtersData=productsData.filter((item,i)=>{
-      if(item.price*100<=5000){
-       return true;
-      }
-   })
-   //console.log(filtersData)
-   setFilters(filtersData)
-   setRadioBtnStatus({ ...radioBtnStatus, Price1:1})
-   }
+   
    break;
+
+   
+  case  parameter==="below5000" && radioBtnStatus.Price1==1 && radioBtnStatus.Rating1==0 && radioBtnStatus.Rating2==0:
+       
+  let RfiltersDataB5k=Filters.filter((item,i)=>{
+    if(item.price*100>5000){
+     return true;
+    }
+ })
+ //console.log(filtersData)
+ setFilters(RfiltersDataB5k)
+ setRadioBtnStatus({ ...radioBtnStatus, Price1:0})
+ 
+ break;
+
+
+
+
+
+
+
+ case  parameter==="below5000" && radioBtnStatus.Price1==1 && radioBtnStatus.Rating1==1 && radioBtnStatus.Rating2==0:
+         
+
+  console.log("Remove Rating 1")
+  let removeRating1=productsData.filter((item, i) => {
+    //console.log("2")
+    if (item.rating >= 4 && item.rating <= 4.5) {
+      return true;
+    }
+  })
+  //console.log(filtersData)
+  setFilters(removeRating1)
+ setRadioBtnStatus({ ...radioBtnStatus, Price1:0})
+ 
+ break;
+
+
+ 
+ case  parameter==="below5000" && radioBtnStatus.Price1==1 && radioBtnStatus.Rating1==0 && radioBtnStatus.Rating2==1:
+       
+  let RemoveR1or2filtersDataB5k=productsData.filter((item, i) => {
+    //console.log("2")
+    if (item.rating > 4.5) {
+      return true;
+    }
+  })
+  //console.log(filtersData)
+  setFilters(RemoveR1or2filtersDataB5k)
+ setRadioBtnStatus({ ...radioBtnStatus, Price1:0})
+ 
+ break;
+
+ 
+
+case  parameter==="below5000" && radioBtnStatus.Price1==1 && radioBtnStatus.Rating1==1 && radioBtnStatus.Rating2==1:
+  console.log("Ramana")
+let RemovePriceFilter=productsData.filter((item,i)=>{
+if(item.price){
+return true;
+}
+})
+//console.log(filtersData)
+setFilters(RemovePriceFilter)
+setRadioBtnStatus({ ...radioBtnStatus, Price1:0})
+
+break;
+
+
+case  parameter==="below5000" && radioBtnStatus.Price1==0 || radioBtnStatus.Rating1==1 || radioBtnStatus.Rating2==1:
+  //console.log("Ramana")
+let R1or2filtersDataB5k=Filters.filter((item,i)=>{
+if(item.price*100<=5000){
+return true;
+}
+})
+//console.log(filtersData)
+setFilters(R1or2filtersDataB5k)
+setRadioBtnStatus({ ...radioBtnStatus, Price1:1})
+
+break;
+
+
+ 
+
+
+
   
 //================================================= CASE-6 ==============================================================
 
-case  parameter==="below5000" && radioBtnStatus.Price1==1:
-       
-  if(Filters.length>0){
-    let filtersData=Filters.filter((item,i)=>{
-      if(item.price*100<=5000){
-       return false;
-      }
-   })
-   //console.log(filtersData)
-   setFilters(filtersData)
-   setRadioBtnStatus({ ...radioBtnStatus, Price1:0})
-  }
-  break;
+
 
 //====================================== CASE-7 ========================================================================
 
